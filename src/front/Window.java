@@ -44,7 +44,7 @@ public class Window {
     public Window () {
         chat.setBounds(30, 0, 400, 400);
         frame.add(scrollPane);
-        frame.setSize(460, 900);
+        frame.setSize(760, 650);
         frame.setLayout(null);
         frame.setVisible(true);
         scrollPane.setBounds(30, 50, 400, 400);
@@ -62,21 +62,21 @@ public class Window {
         frame.add(botaoEnviar);
         botaoEnviar.addActionListener(sendListener);
 
-        botaoCryptoPadrao.setBounds(30, 620, 100, 30);
+        botaoCryptoPadrao.setBounds(450, 50, 100, 30);
         botaoCryptoPadrao.addActionListener(setPadrao);
         frame.add(botaoCryptoPadrao);
 
-        botaoCryptoRC4.setBounds(30, 670, 100, 30);
-        rc4Key.setBounds(150, 670, 150, 30);
+        botaoCryptoRC4.setBounds(450, 100, 100, 30);
+        rc4Key.setBounds(580, 100, 150, 30);
         botaoCryptoRC4.addActionListener(setRC4);
         frame.add(botaoCryptoRC4);
         frame.add(rc4Key);
 
-        botaoCryptoSDES.setBounds(30, 720, 100, 30);
+        botaoCryptoSDES.setBounds(450, 150, 100, 30);
         botaoCryptoSDES.addActionListener(setSDES);
         frame.add(botaoCryptoSDES);
 
-        botaoCryptoDHRC4.setBounds(30, 770, 100, 30);
+        botaoCryptoDHRC4.setBounds(450, 200, 100, 30);
         botaoCryptoDHRC4.addActionListener(setDHRC4);
         frame.add(botaoCryptoDHRC4);
     }
