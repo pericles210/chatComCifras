@@ -6,7 +6,7 @@ import net.ServerNet;
 
 import java.util.Random;
 
-public class DF_RC4 implements CryptoSystemInterface {
+public class DH_RC4 implements CryptoSystemInterface {
     private static ClientNet client;
     private static ServerNet server;
     private Random rand = new Random();
@@ -14,7 +14,7 @@ public class DF_RC4 implements CryptoSystemInterface {
     private String addr;
     private static long P = 23, G = 9, mySecretKey, myPublicKey;
     private static String friendsPublicKey;
-    public DF_RC4(String addr){
+    public DH_RC4(String addr){
         this.addr = addr;
         this.client = new ClientNet(this.addr, 3001);
         this.server = new ServerNet(3001);

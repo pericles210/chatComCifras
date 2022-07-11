@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import cifras.DF_RC4;
+import cifras.DH_RC4;
 import cifras.Padrao;
 import cifras.RC4;
 import cifras.SDES;
@@ -17,14 +17,14 @@ import net.ClientNet;
 import net.ServerNet;
 
 public class Window {
-    private static JTextArea chat = new JTextArea("");
+    private static JTextArea chat = new JTextArea("Chat:");
     private JFrame frame= new JFrame();
     private JButton botaoEnviar = new JButton("Enviar");
     private JButton botaoDefIP = new JButton("Setar IP:");
     private JButton botaoCryptoPadrao = new JButton("Padrão");
     private JButton botaoCryptoRC4 = new JButton("RC4");
     private JButton botaoCryptoSDES = new JButton("SDES");
-    private JButton botaoCryptoDFRC4 = new JButton("DF-RC4");
+    private JButton botaoCryptoDHRC4 = new JButton("DH-RC4");
     private JTextArea in = new JTextArea();
     private JTextArea ipIn = new JTextArea();
     private JTextArea rc4Key = new JTextArea();
@@ -76,9 +76,9 @@ public class Window {
         botaoCryptoSDES.addActionListener(setSDES);
         frame.add(botaoCryptoSDES);
 
-        botaoCryptoDFRC4.setBounds(30, 770, 100, 30);
-        botaoCryptoDFRC4.addActionListener(setDFRC4);
-        frame.add(botaoCryptoDFRC4);
+        botaoCryptoDHRC4.setBounds(30, 770, 100, 30);
+        botaoCryptoDHRC4.addActionListener(setDHRC4);
+        frame.add(botaoCryptoDHRC4);
     }
 
     //conectar o cliente ao servidor
@@ -156,10 +156,11 @@ public class Window {
         }
     };
 
-    private ActionListener setDFRC4 = new ActionListener() {
+    // ActionListener -> definir criptografia DH-RC4
+    private ActionListener setDHRC4 = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
-            cs = new DF_RC4(ipServer);
+            cs = new DH_RC4(ipServer);
         }
     };
 
