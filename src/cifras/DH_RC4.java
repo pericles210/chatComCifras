@@ -12,8 +12,8 @@ public class DH_RC4 implements CryptoSystemInterface {
     private Random rand = new Random();
     private RC4 rc4;
     private String addr;
-    private static long P = 23, G = 9, mySecretKey, myPublicKey;
-    private static String friendsPublicKey;
+    private static long P = 23, G = 9, mySecretKey, myPublicKey, friendsPublicKey;
+    private static String chaveSessao;
     public DH_RC4(String addr){
         this.addr = addr;
         this.client = new ClientNet(this.addr, 3001);
@@ -21,7 +21,8 @@ public class DH_RC4 implements CryptoSystemInterface {
         this.mySecretKey = rand.nextInt(100);
         this.myPublicKey = power(G, this.mySecretKey, P);
         trocaDeChaves();
-        this.rc4 = new RC4(friendsPublicKey);
+        chaveSessao = String.valueOf(power(friendsPublicKey, this.mySecretKey, P));
+        this.rc4 = new RC4(chaveSessao);
     }
     @Override
     public String encrypt(String msg) {
@@ -93,7 +94,7 @@ public class DH_RC4 implements CryptoSystemInterface {
                     break;
                 }
             }
-            friendsPublicKey = mensagem.substring(3);
+            friendsPublicKey = Long.parseLong(mensagem.substring(3));
         }
     };
 }
